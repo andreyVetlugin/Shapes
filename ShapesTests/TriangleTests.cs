@@ -55,5 +55,14 @@ namespace ShapesTests
 
             That(triangle2.Area, Is.EqualTo(triangle1.Area));
         }
+
+        [TestCase(2, 9, 8, false)]
+        [TestCase(1, 3, 3, false)]
+        [TestCase(4, 3, 5, true)]
+        public void TriangleIsRight_ResultEqualsExpected(double aSide, double bSide, double cSide, bool expected)
+        {
+            var triangle = new Triangle(aSide, bSide, cSide);
+            That(expected, Is.EqualTo(triangle.IsTriangleRight()));
+        }
     }
 }

@@ -21,6 +21,13 @@ public class Triangle : Shape
         (ASide, BSide, CSide) = (aSide, bSide, cSide);
         _area = new Lazy<double>(GetArea);
     }
+    
+    public bool IsTriangleRight()
+    {
+        var sortedSides = new[] {ASide,BSide,CSide}.Order().ToArray();
+        return sortedSides[0] != 0 
+               && Math.Pow(sortedSides[2], 2) == Math.Pow(sortedSides[0], 2) + Math.Pow(sortedSides[1], 2);
+    }
 
     private double GetArea()
     {
